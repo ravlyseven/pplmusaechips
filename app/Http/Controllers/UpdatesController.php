@@ -39,7 +39,6 @@ class UpdatesController extends Controller
     public function store(Request $request)
     {
         Update::create($request->all());
-
         return redirect('/updates');
     }
 
@@ -49,9 +48,9 @@ class UpdatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Update $update)
     {
-        //
+        return view('updates/update', compact('update'));
     }
 
     /**
@@ -60,7 +59,7 @@ class UpdatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Update $Update)
     {
         //
     }
@@ -74,7 +73,11 @@ class UpdatesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = update::findOrFail($id);
+        $data->title = $request->get('title');
+        $data->content = $request->get('content');
+        $data->save();
+        return redirect('updates');
     }
 
     /**
@@ -83,8 +86,10 @@ class UpdatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function destroy(Update $update)
     {
-        //
+        Update::destroy($update->id);
+        return redirect('/updates')->with('status', 'Data Berhasil Dihapus');
     }
 }

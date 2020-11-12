@@ -18,7 +18,8 @@
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <input type="text" class="form-control" id="content" placeholder="" name="content" style="height: 250px;">
+                        <textarea type="text" class="form-control" id="content" placeholder="content" name="content" style="height:250px;"></textarea>
+                        <!-- <input type="text" class="form-control" id="content" placeholder="" name="content" style=""> -->
                     </div>
                     <button type="submit" class="btn btn-primary">Tambah Data</button>
                 </form>
