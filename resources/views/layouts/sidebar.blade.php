@@ -46,14 +46,14 @@
           <span>Dashboard</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ url('home') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('news') }}">
+        <a class="nav-link" href="{{ url('updates') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>News</span></a>
+          <span>Updates</span></a>
       </li>
       
 

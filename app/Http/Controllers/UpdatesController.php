@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 //use App\model untuk connect ke model
-use App\admin;
+use App\Update;
 
-class AkunController extends Controller
+class UpdatesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +16,8 @@ class AkunController extends Controller
      */
     public function index()
     {
-        //cara 1
-        //$nama_variabel = DB::table('nama_tabel')->get();
-        $admins = DB::table('admins')->get();
-        return view('akun/index', ['admins' => $admins]); 
-        //atau 
-        //return view('lokasi', compact('nama_variabel'));
-        
-        //cara 2
-        //$nama_variabel = \app\nama_model::all();
-        //$nama_variabel = nama_model::all();
+        $updates = Update::all();
+        return view('updates/index', ['updates' => $updates]);
     }
 
     /**
@@ -35,7 +27,7 @@ class AkunController extends Controller
      */
     public function create()
     {
-        return view('akun/create');
+        return view('updates/create');
     }
 
     /**
@@ -46,22 +38,9 @@ class AkunController extends Controller
      */
     public function store(Request $request)
     {
-        // $admin = new admin;
-        // $admin->NamaAdmin = $request->NamaAdmin;
-        // $admin->PasswordAdmin = $request->PasswordAdmin;
-        // $admin->EmailAdmin = $request->EmailAdmin;
+        Update::create($request->all());
 
-        // $admin->save();
-
-        // admin::create[(
-        //     'NamaAdmin' => $request->NamaAdmin,
-        //     'PasswordAdmin' => $request->PasswordAdmin,
-        //     'EmailAdmin' => $request->EmailAdmin
-        // )];
-
-        admin::create($request->all());
-
-        return redirect('/akun');
+        return redirect('/updates');
     }
 
     /**
@@ -70,10 +49,9 @@ class AkunController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(admin $admin)
+    public function show($id)
     {
-        return view('akun/show', compact('admin'));
-        //return view('lokasi', ['admin' => $admin]);
+        //
     }
 
     /**

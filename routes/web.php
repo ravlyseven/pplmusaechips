@@ -24,5 +24,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard');
-Route::get('/news', 'HomeController@news');
+Route::get('/updates', 'UpdatesController@index');
+Route::get('/updates/create', 'UpdatesController@create');
+Route::post('/updates', 'UpdatesController@store');
 
