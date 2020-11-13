@@ -13,13 +13,6 @@
 
 Route::get('/', 'MainController@index');
 
-Route::get('/akun', 'AkunController@index');
-Route::get('/akun/create', 'AkunController@create');
-Route::get('/akun/{admin}', 'AkunController@show');
-Route::post('/akun', 'AkunController@store');
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
