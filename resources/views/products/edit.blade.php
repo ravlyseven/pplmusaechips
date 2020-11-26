@@ -30,6 +30,7 @@
                         <textarea type="text" class="form-control" id="description" value="" name="description" style="height:250px;">{{$product->description}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Selesai</button>
+                    <a class="btn btn-warning" href="{{ url('products') }}">Kembali</a>
                 </form>
 				
 		
