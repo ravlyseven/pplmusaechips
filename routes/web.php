@@ -11,15 +11,19 @@
 |
 */
 
-Route::get('/', 'MainController@index');
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard');
 
+Route::get('/profiles', 'UsersController@show');
+Route::post('/profile', 'UsersController@update');
+Route::post('/profile_password', 'UsersController@update_password');
+
 Route::resource('updates', 'UpdatesController');
 Route::resource('products', 'ProductsController');
+Route::resource('orders', 'OrdersController');
 
-Route::get('/profiles', 'MainController@show');
 

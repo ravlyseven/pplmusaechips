@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <img class="img-thumbnail" src="{{ asset('images/'.$product->photo) }}">
+                                <img class="img-thumbnail" src="{{ asset('storage/'.$product->photo) }}">
                             </div>
                             <div class="col mr-2">
                                 <a href="products/{{ $product->id }}">

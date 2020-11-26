@@ -3,12 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
+use App\Product;
+use Darryldecode\Cart\Cart;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class MainController extends Controller
+
+
+class OrdersController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return redirect('login');
+        return view('orders/index');
     }
 
     /**
@@ -38,9 +51,9 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-     
+        //
     }
 
     /**
@@ -63,7 +76,15 @@ class MainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Product::findOrFail($id);
+        \Cart::add(
+            $product->name,
+            $product->price,
+            1,
+            array()
+        );
+        return redirect('orders');
+
     }
 
     /**

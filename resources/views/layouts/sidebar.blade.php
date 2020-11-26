@@ -61,7 +61,7 @@
           <span>Products</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ url('orders') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Pemesanan</span></a>
       </li>

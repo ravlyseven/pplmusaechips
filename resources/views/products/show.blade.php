@@ -19,7 +19,7 @@
             <!-- Nested Row within Card Body -->
             <div class="row">
               <div class="col-lg-6 d-none d-lg-block bg-dark">
-                <img class="rounded mx-auto d-block mt-4" style="height:80%; width:90%" src="{{ asset('images/'.$product->photo) }}">
+                <img class="rounded mx-auto d-block mt-4" style="height:80%; width:90%" src="{{ asset('storage/'.$product->photo) }}">
               </div>
               <div class="col-lg-6">
                 <div class="p-5">
@@ -30,7 +30,11 @@
                     <h1 class="h4 mb-0 font-weight-bold text-gray-800">Deskripsi Produk</h1>
                     <p class="mb-4">{{$product->description}}</p>
                     <hr>
-                    <a class="btn btn-warning" href="">Tambah Ke Keranjang</a>
+
+                    <form action="{{ url('orders', $product->id) }}" method="post">
+                      @csrf
+                      <button type="submit" class="btn btn-warning">Tambah Ke Keranjang</button>
+                    </form>
                     <a class="btn btn-primary" href="{{ url('products') }}">Kembali</a>
                   </div>
                 </div>
