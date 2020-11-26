@@ -18,6 +18,10 @@
                         <input type="text" class="form-control" id="title" value="{{$update->title}}" name="title">
                     </div>
                     <div class="form-group">
+                        <label for="price">Price</label>
+                        <textarea type="text" class="form-control" id="price" value="" name="price">{{$update->price}}</textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="content">Content</label>
                         <textarea type="text" class="form-control" id="content" value="" name="content" style="height:250px;">{{$update->content}}</textarea>
                     </div>
