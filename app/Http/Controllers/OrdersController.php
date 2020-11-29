@@ -76,15 +76,7 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Product::findOrFail($id);
-        \Cart::add(
-            $product->name,
-            $product->price,
-            1,
-            array()
-        );
-        return redirect('orders');
-
+        //
     }
 
     /**
