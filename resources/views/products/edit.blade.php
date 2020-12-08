@@ -22,6 +22,10 @@
                         <input type="text" class="form-control" id="price" value="{{$product->price}}" name="price">
                     </div>
                     <div class="form-group">
+                        <label for="stock">Stok Produk</label>
+                        <input type="text" class="form-control" id="stock" value="{{$product->stock}}" name="stock">
+                    </div>
+                    <div class="form-group">
                         <label for="photo">Foto Produk</label>
                         <input type="file" class="form-control" id="photo" placeholder="photo" name="photo" style="height:45px;">
                     </div>

@@ -1,14 +1,14 @@
 @extends('layouts/sidebar')
 
 @section('title')
-<title>Create Updates</title>
+<title>Musae Chips - Pembukuan</title>
 @endsection
 
 @section('content')
 <div class="container">
 		<div class="row">
 			<div class="col-10">
-				<h1 class="mt-3">Tambah Data Updates</h1>
+				<h1 class="mt-3">Tambah Data Pembukuan</h1>
                 
                 <form method="post" action="/updates">
                     @csrf

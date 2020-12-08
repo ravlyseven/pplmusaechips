@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row mx-3">
         <div class="col-md-6">
-            <div class="main-card mb-3 card">
+            <div class="main-card mb-3 card bg-warning">
                 <div class="card-body">
-                    <h5 class="card-title">Profile Information</h5>
+                    <h5 class="card-title font-weight-bold">Profile Information</h5>
                     <form method="POST" action="{{ url('profile') }}">
                         @csrf                           
                         <div class="position-relative form-group">
@@ -36,9 +36,9 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="main-card mb-3 card">
+            <div class="main-card mb-3 card bg-warning">
                 <div class="card-body">
-                    <h5 class="card-title">Password</h5>
+                    <h5 class="card-title font-weight-bold">Password</h5>
                     <form method="POST" action="{{ url('profile_password') }}">
                         @csrf                           
                         <div class="position-relative form-group">

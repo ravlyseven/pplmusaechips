@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-//use App\model untuk connect ke model
 use App\Product;
 use Illuminate\Support\Facades\Storage;
+use UxWeb\SweetAlert\SweetAlert;
 
 class ProductsController extends Controller
 {
@@ -42,6 +42,7 @@ class ProductsController extends Controller
         $data = new Product();
         $data->name = $request->get('name');
         $data->price = $request->get('price');
+        $data->stock = $request->get('stock');
         $data->description = $request->get('description');
         if($request->hasFile('photo'))
         {
@@ -49,6 +50,7 @@ class ProductsController extends Controller
             $data->photo = $photo;
         }
         $data->save();
+        alert()->success('Create Success', 'Create Product');
         return redirect('products');
     }
 
@@ -87,6 +89,7 @@ class ProductsController extends Controller
         $data = Product::findOrFail($id);
         $data->name = $request->get('name');
         $data->price = $request->get('price');
+        $data->stock = $request->get('stock');
         $data->description = $request->get('description');
         if($request->hasFile('photo'))
         {
@@ -97,6 +100,7 @@ class ProductsController extends Controller
             $data->photo = $photo;
         }
         $data->save();
+        alert()->success('Update Success', 'Update Product');
         return redirect('products');
     }
 
@@ -109,7 +113,8 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         Product::destroy($product->id);
-        Storage::delete('public', $product->photo);
+        \Storage::delete('public', $product->photo);
+        alert()->success('Delete Success', 'Delete Product');
         return redirect('/products')->with('status', 'Data Berhasil Dihapus');
     }
 }

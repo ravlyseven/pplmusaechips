@@ -40,20 +40,27 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
+      @if(\Auth::user()->hasAnyRole('admin'))
       <li class="nav-item">
         <a class="nav-link" href="{{ url('dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Input Penjualan Offline</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+      @endif
+
+      <!-- view pembeli -->
+      <li class="nav-item">
         <a class="nav-link" href="{{ url('home') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Home</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('updates') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Pembukuan</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url('products') }}">
@@ -61,11 +68,15 @@
           <span>Products</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('orders') }}">
+        <a class="nav-link" href="{{ url('history') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Pemesanan</span></a>
+          <span>Riwayat Pemesanan</span></a>
       </li>
       
+      <!-- close Button -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
 
       
 
@@ -91,7 +102,23 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            
+            <!-- Keranjang Belanja -->
+            <li class="nav-item">
+              <?php
+                $orders = \App\Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+                if($orders != null)
+                {
+                  $notif = \App\Order_Detail::where('order_id', $orders->id)->count();
+                }
+              ?>
+              <a class="nav-link" href="{{ url('orders') }}">
+                <i class="fa fa-shopping-cart"></i>
+                @if($orders != null)
+                  <span class="badge badge-danger badge-counter">{{ $notif }}</span>
+                @endif
+              </a>
+            </li>
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -181,6 +208,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('asset/js/sb-admin-2.min.js')}}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  @include('sweet::alert')
 
 </body>
 

@@ -21,6 +21,10 @@
                         <input type="text" class="form-control" id="price" placeholder="price" name="price">
                     </div>
                     <div class="form-group">
+                        <label for="stock">Stok</label>
+                        <input type="text" class="form-control" id="stock" placeholder="stock" name="stock">
+                    </div>
+                    <div class="form-group">
                         <label for="photo">Foto Produk</label>
                         <input type="file" class="form-control" id="photo" placeholder="photo" name="photo" style="height:45px;">
                     </div>
