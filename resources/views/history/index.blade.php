@@ -33,12 +33,18 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $order->updated_at }}</td>
                         <td>{{ $order->user->name }}</td>
-                        <td align="left">Rp. {{ number_format($order->total_price+$order->code) }}</td>
+                        <td align="left">Rp. {{ number_format($order->total_price+$order->code+$order->ongkir) }}</td>
                         <td>
                             @if($order->status == 1)
                             Belum Dibayar
-                            @else
+                            @elseif($order->status == 2)
                             Sudah Dibayar
+                            @elseif($order->status == 3)
+                            Pembayaran Valid
+                            @elseif($order->status == 4)
+                            Barang Dalam Pengiriman
+                            @elseif($order->status == 5)
+                            Selesai
                             @endif
                         </td>
                         <td>

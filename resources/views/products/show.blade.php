@@ -27,6 +27,7 @@
                     <h1 class="h3 font-weight-bold text-gray-900 mb-2">{{ $product->name }}</h1>
                     <h1 class="h4 mb-0 font-weight-bold text-gray-800">Rp. {{ number_format($product->price) }}</h1>
                     <h1 class="h4 mb-0 font-weight-bold text-gray-800">Stok : {{ $product->stock }}</h1>
+                    <h1 class="h5 mb-0 font-weight-bold text-gray-800">Berat : {{ $product->weight }} gram</h1>
                     <hr>
                     <h1 class="h4 mb-0 font-weight-bold text-gray-800">Deskripsi Produk</h1>
                     <p class="mb-4">{{$product->description}}</p>
@@ -34,7 +35,7 @@
                     <p>Masukkan Jumlah Pesanan :</p>
                     <form action="{{ url('orders') }}/{{ $product->id }}" method="post" class="d-inline">
                       @csrf
-                      <input type="text" name="total_order" class="form-control mb-3">
+                      <input type="number" name="total_order" class="form-control mb-3">
                       <button type="submit" class="btn btn-warning">
                       <i class="fa fa-shopping-cart"></i>Tambah Ke Keranjang</button>
                     </form>

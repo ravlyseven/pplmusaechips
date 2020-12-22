@@ -35,7 +35,9 @@
                         <td>
                             <img width="100px;" src="{{ asset('storage/'.$order_detail->product->photo) }}">
                         </td>
-                        <td>{{ $order_detail->product->name }}</td>
+                        <td>
+                            <a class="text-dark" href="products/{{ $order_detail->product_id }}">{{ $order_detail->product->name }}</a>
+                        </td>
                         <td>{{ $order_detail->quantity }}</td>
                         <td align="left">Rp. {{ number_format($order_detail->product->price) }}</td>
                         <td align="left">Rp. {{ number_format($order_detail->total_price) }}</td>

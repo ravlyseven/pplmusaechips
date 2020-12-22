@@ -39,10 +39,55 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        // cek inputan != null
+        if($request->name == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        elseif($request->price == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        elseif($request->stock == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        elseif($request->weight == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        elseif($request->description == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        
+        // cek inputan harga dan stok
+        if ($request->price < 1) 
+        {
+            alert()->warning('Jumlah inputan minimal 1', 'Warning !!!');
+            return back();
+        }
+        elseif ($request->stock < 0) 
+        {
+            alert()->warning('Jumlah inputan minimal 0', 'Warning !!!');
+            return back();
+        }
+        elseif ($request->weight < 0) 
+        {
+            alert()->warning('Jumlah inputan minimal 0', 'Warning !!!');
+            return back();
+        }
+
         $data = new Product();
         $data->name = $request->get('name');
         $data->price = $request->get('price');
         $data->stock = $request->get('stock');
+        $data->weight = $request->get('weight');
         $data->description = $request->get('description');
         if($request->hasFile('photo'))
         {
@@ -86,10 +131,55 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // cek inputan != null
+        if($request->name == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        elseif($request->price == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        elseif($request->stock == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        elseif($request->weight == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        elseif($request->description == null)
+        {
+            alert()->warning('Harap isi seluruh form', 'Warning !!!');
+            return back();
+        }
+        
+        // cek inputan harga dan stok
+        if ($request->price < 1) 
+        {
+            alert()->warning('Jumlah inputan minimal 1', 'Warning !!!');
+            return back();
+        }
+        elseif ($request->stock < 0) 
+        {
+            alert()->warning('Jumlah inputan minimal 0', 'Warning !!!');
+            return back();
+        }
+        elseif ($request->weight < 0) 
+        {
+            alert()->warning('Jumlah inputan minimal 0', 'Warning !!!');
+            return back();
+        }
+
         $data = Product::findOrFail($id);
         $data->name = $request->get('name');
         $data->price = $request->get('price');
         $data->stock = $request->get('stock');
+        $data->weight = $request->get('weight');
         $data->description = $request->get('description');
         if($request->hasFile('photo'))
         {

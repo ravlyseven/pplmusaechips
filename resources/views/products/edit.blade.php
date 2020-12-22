@@ -19,11 +19,15 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Harga Produk</label>
-                        <input type="text" class="form-control" id="price" value="{{$product->price}}" name="price">
+                        <input type="number" class="form-control" id="price" value="{{$product->price}}" name="price">
                     </div>
                     <div class="form-group">
                         <label for="stock">Stok Produk</label>
-                        <input type="text" class="form-control" id="stock" value="{{$product->stock}}" name="stock">
+                        <input type="number" class="form-control" id="stock" value="{{$product->stock}}" name="stock">
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (gram)</label>
+                        <input type="number" class="form-control" id="weight" value="{{$product->weight}}" name="weight">
                     </div>
                     <div class="form-group">
                         <label for="photo">Foto Produk</label>
@@ -34,7 +38,7 @@
                         <textarea type="text" class="form-control" id="description" value="" name="description" style="height:250px;">{{$product->description}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Selesai</button>
-                    <a class="btn btn-warning" href="{{ url('products') }}">Kembali</a>
+                    <a class="btn btn-danger" href="{{ url('products') }}">Kembali</a>
                 </form>
 				
 		

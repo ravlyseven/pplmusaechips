@@ -6,9 +6,12 @@
 
 @section('content')
     <div class="container-fluid">
-    @if(\Auth::user()->hasAnyRole('admin'))
-    <a href="products/create"class="btn btn-warning ml-3 mb-3">Tambah Data</a>
-    @endif
+    @guest
+    @else
+        @if(\Auth::user()->hasAnyRole('admin'))
+        <a href="products/create" class="btn btn-warning ml-3 mb-3">Tambah Data</a>
+        @endif
+    @endguest
 
         <div class="row">
             <!-- Tampilan Produk -->
@@ -26,14 +29,17 @@
                                 <div class="h6 mb-0 font-weight-bold text-gray-800">Rp. {{ number_format($product->price) }}</div>
                                 </a>
 
-                                @if(\Auth::user()->hasAnyRole('admin'))
-                                <a class="btn btn-primary" href="products/{{ $product->id }}/edit" class="card-link">Ubah</a>
-                                <form action="products/{{ $product->id }}" method="post" class="d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
-                                </form>
-                                @endif
+                                @guest
+                                @else
+                                    @if(\Auth::user()->hasAnyRole('admin'))
+                                    <a class="btn btn-primary" href="products/{{ $product->id }}/edit" class="card-link">Ubah</a>
+                                    <form action="products/{{ $product->id }}" method="post" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                    </form>
+                                    @endif
+                                @endguest
 
                             </div>
                         </div>

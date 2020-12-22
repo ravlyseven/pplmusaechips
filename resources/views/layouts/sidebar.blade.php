@@ -29,7 +29,7 @@
     <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('dashboard') }}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('home') }}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -39,6 +39,8 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
+      @guest
+      @else
       <!-- Nav Item - Dashboard -->
       @if(\Auth::user()->hasAnyRole('admin'))
       <li class="nav-item">
@@ -47,14 +49,20 @@
           <span>Dashboard</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ url('spendings') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Input Penjualan Offline</span></a>
+          <span>Pengeluaran</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('finances') }}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Keuangan</span></a>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
       @endif
+      @endguest
 
       <!-- view pembeli -->
       <li class="nav-item">
@@ -102,6 +110,8 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
+            @guest
+            @else
             <!-- Keranjang Belanja -->
             <li class="nav-item">
               <?php
@@ -119,6 +129,24 @@
               </a>
             </li>
 
+            <!-- Fitur Chat -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('chats') }}">
+                <i class="fas fa-comments"></i>
+              </a>
+            </li>
+            @endguest
+
+            @guest
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+              @if (Route::has('register'))
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+              </li>
+              @endif
+            @else
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -139,6 +167,7 @@
                 </a>
               </div>
             </li>
+            @endguest
 
           </ul>
 
@@ -156,7 +185,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Musae Chips Website 2020</span>
           </div>
         </div>
       </footer>
